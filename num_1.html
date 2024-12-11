@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contador {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .valor {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Contadores</h1>
+    </header>
+    <main>
+        <div class="contador">
+            <h2>Exercícios feitos</h2>
+            <div class="valor" id="valor1">0</div>
+            <button onclick="incrementar(1)">+</button>
+            <button onclick="decrementar(1)">-</button>
+        </div>
+        <div class="contador">
+            <h2>Exercícios que faltam</h2>
+            <div class="valor" id="valor2">0</div>
+            <button onclick="incrementar(2)">+</button>
+            <button onclick="decrementar(2)">-</button>
+        </div>
+    </main>
+    <script>
+        const valores = [0, 0];
+
+        function incrementar(contador) {
+            valores[contador - 1]++;
+            document.getElementById(`valor${contador}`).innerText = valores[contador - 1];
+        }
+
+        function decrementar(contador) {
+            if (valores[contador - 1] > 0) {
+                valores[contador - 1]--;
+                document.getElementById(`valor${contador}`).innerText = valores[contador - 1];
+            }
+        }
+    </script>
+</body>
+
+</html>

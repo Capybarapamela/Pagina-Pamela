@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Média</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1976D2;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cálculo de Média</h1>
+    </header>
+    <main>
+        <input type="number" id="nota1" placeholder="Nota 1 (0 a 100)" min="0" max="100">
+        <input type="number" id="nota2" placeholder="Nota 2 (0 a 100)" min="0" max="100">
+        <input type="number" id="nota3" placeholder="Nota 3 (0 a 100)" min="0" max="100">
+        <button onclick="calcularMedia()">Calcular Média</button>
+        <div class="resultado" id="resultado">Insira as notas acima.</div>
+        <div class="erro" id="erro"></div>
+    </main>
+    <script>
+        function calcularMedia() {
+            const nota1 = validarNota(document.getElementById('nota1').value);
+            const nota2 = validarNota(document.getElementById('nota2').value);
+            const nota3 = validarNota(document.getElementById('nota3').value);
+
+            if (nota1 === null || nota2 === null || nota3 === null) {
+                exibirErro("Por favor, insira notas válidas entre 0 e 100.");
+                return;
+            }
+
+            const media = (nota1 + nota2 + nota3) / 3;
+            let conceito = "";
+
+            if (media >= 90) conceito = "A";
+            else if (media >= 70) conceito = "B";
+            else if (media >= 60) conceito = "C";
+            else if (media >= 40) conceito = "D";
+            else conceito = "E";
+
+            document.getElementById('resultado').innerText =
+                `Média: ${media.toFixed(2)} | Conceito: ${conceito}`;
+            limparErro();
+        }
+
+        function validarNota(valor) {
+            const nota = parseFloat(valor);
+            if (isNaN(nota) || nota < 0 || nota > 100) {
+                return null;
+            }
+            return nota;
+        }
+
+        function exibirErro(mensagem) {
+            document.getElementById('erro').innerText = mensagem;
+        }
+
+        function limparErro() {
+            document.getElementById('erro').innerText = "";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Jogo de Craps</title>
+  <link rel="stylesheet" href="num_3estilo.css">
+</head>
+
+<body>
+  <h1>Jogo de Craps</h1>
+  <div class="dados">
+    <p>Dado 1: <span id="dado1"></span></p>
+    <p>Dado 2: <span id="dado2"></span></p>
+    <p>Soma: <span id="soma"></span></p>
+    <p>Pontuação: <span id="pontuacao"></span></p>
+  </div>
+  <button onclick="rolarDados()">Rolar os Dados</button>
+  <div id="mensagem">Clique no botão para jogar.</div>
+
+  <script>
+    let pontuacao = 0;
+
+    function rolarDados() {
+      const dado1 = Math.floor(Math.random() * 6) + 1;
+      const dado2 = Math.floor(Math.random() * 6) + 1;
+      const soma = dado1 + dado2;
+
+      document.getElementById('dado1').textContent = dado1;
+      document.getElementById('dado2').textContent = dado2;
+      document.getElementById('soma').textContent = soma;
+
+      if (pontuacao === 0) {
+        // Primeira rodada
+        if (soma === 7 || soma === 11) {
+          exibirMensagem("Você venceu! Parabéns!");
+        } else if (soma === 2 || soma === 3 || soma === 12) {
+          exibirMensagem("Craps! Você perdeu.");
+        } else {
+          pontuacao = soma;
+          document.getElementById('pontuacao').textContent = pontuacao;
+          exibirMensagem(`Seu ponto é ${pontuacao}. Tente tirar ${pontuacao} novamente antes de tirar 7.`);
+        }
+      } else {
+        // Rodadas subsequentes
+        if (soma === pontuacao) {
+          exibirMensagem("Você fez seu ponto! Você venceu!");
+        } else if (soma === 7) {
+          exibirMensagem("Você tirou 7. Você perdeu.");
+        } else {
+          exibirMensagem(`Você tirou ${soma}. Continue tentando fazer seu ponto (${pontuacao}).`);
+        }
+      }
+    }
+
+    function exibirMensagem(texto) {
+      document.getElementById('mensagem').textContent = texto;
+    }
+
+    function resetarJogo() {
+      pontuacao = 0;
+      document.getElementById('pontuacao').textContent = '';
+      exibirMensagem("Clique no botão para jogar novamente.");
+    }
+  </script>
+</body>
+
+</html>

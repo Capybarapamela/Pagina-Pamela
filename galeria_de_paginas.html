@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Páginas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #cea6cc;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .alunas {
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #ce87ca;
+            font-size: 18px;
+            border: 2px solid #ce87ca;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #cea6cc;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Galeria de Páginas</h1>
+        <h3 class="alunas">Desenvolvido por: Ana Clara e Pâmela</h3>
+    </header>
+
+    <div class="gallery">
+
+        <div class="card">
+            <h3>Contadores</h3>
+            <p>Controle de contadores de exercícios feitos e faltando.</p>
+            <a href="num_1.html" target="_blank">Acessar</a>
+        </div>
+
+        <div class="card">
+            <h3>Cálculo de Média</h3>
+            <p>Calcule a média das notas e obtenha o conceito.</p>
+            <a href="num_2.html" target="_blank">Acessar</a>
+        </div>
+
+        <div class="card">
+            <h3>Jogo de Craps</h3>
+            <p>Jogue o tradicional jogo de Craps e tente ganhar!</p>
+            <a href="num_3.html" target="_blank">Acessar</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
